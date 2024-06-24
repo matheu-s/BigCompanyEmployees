@@ -8,9 +8,25 @@ import java.util.List;
  * Each node can have multiple children, representing subordinates in a company hierarchy.
  */
 public class EmployeeTreeNode {
-    private Employee employee;
+    
+    /**
+     * The employee data associated with this node.
+     */
+    private final Employee employee;
+
+    /**
+     * This parent node.
+     */
     private EmployeeTreeNode parent;
+
+    /**
+     * List of the children nodes.
+     */
     private List<EmployeeTreeNode> children;
+
+    /**
+     * The node level in relation to the tree hierarchy.
+     */
     private int level;
 
     /**
@@ -38,9 +54,9 @@ public class EmployeeTreeNode {
     }
 
     /**
-     * Adds a child EmployeeTreeNode to the list of children and set relationship
+     * Adds a child EmployeeTreeNode to the list of children and set relationship.
      * 
-     * @param node EmployeeTreeNode that will be added as child
+     * @param node EmployeeTreeNode that will be added as child.
      */
     public void addChild(EmployeeTreeNode node) {
         this.children.add(node);
@@ -59,10 +75,10 @@ public class EmployeeTreeNode {
     }
 
     /**
-     * Adds nodes to the employee's list recursively
+     * Adds nodes to the employee's list recursively.
      * 
-     * @param node current node expanding
-     * @param allNodes initial empty list
+     * @param node current node expanding.
+     * @param allNodes initial empty list.
      */
     private void collectChildNodesRecursively(EmployeeTreeNode node, List<EmployeeTreeNode> allNodes) {
         allNodes.add(node);
@@ -75,11 +91,7 @@ public class EmployeeTreeNode {
     public Employee getEmployee() {
         return employee;
     }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
+    
     public EmployeeTreeNode getParent() {
         return parent;
     }
@@ -91,11 +103,7 @@ public class EmployeeTreeNode {
     public List<EmployeeTreeNode> getChildren() {
         return children;
     }
-
-    public void setChildren(List<EmployeeTreeNode> children) {
-        this.children = children;
-    }
-
+    
     public int getLevel() {
         return level;
     }

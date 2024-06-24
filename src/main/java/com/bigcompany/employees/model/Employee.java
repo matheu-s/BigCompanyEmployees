@@ -5,10 +5,30 @@ package com.bigcompany.employees.model;
  * Each employee has a unique ID, a name, a salary, and an optional manager ID.
  */
 public class Employee {
-    private int id;
+    
+    /**
+     * The unique identifier for the employee.
+     */
+    private final int id;
+
+    /**
+     * The first name of the employee.
+     */
     private String firstName;
+
+    /**
+     * The last name of the employee.
+     */
     private String lastName;
+
+    /**
+     * The salary of the employee.
+     */
     private double salary;
+
+    /**
+     * The unique identifier of the employee's manager. Can be null for CEO.
+     */
     private Integer managerId;
 
     /**
@@ -16,7 +36,7 @@ public class Employee {
      *
      * @param id        The unique identifier for the employee.
      * @param firstName  The first name of the employee.
-     * @param lastName  The last name of the employee.
+     * @param lastName  The first name of the employee.
      * @param salary    The salary of the employee.
      * @param managerId The unique identifier of the employee's manager. Can be null for CEO.
      */
@@ -32,22 +52,10 @@ public class Employee {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
+    
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }

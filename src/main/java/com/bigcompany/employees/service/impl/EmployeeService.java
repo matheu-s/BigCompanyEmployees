@@ -6,17 +6,21 @@ import com.bigcompany.employees.model.EmployeeTreeNode;
 import com.bigcompany.employees.service.IEmployeeService;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.bigcompany.employees.constant.EmployeeConstants.*;
 
+/**
+ * Handles tree generation and analysis results based on the business rules.
+ * 
+ * @author matheu-s
+ */
 public class EmployeeService implements IEmployeeService {
     
     @Override
     public void analyzeEmployees() {
+        // Building the tree
         EmployeeTreeNode root = null;
         try {
             root = buildEmployeeTreeFromFile();
@@ -31,7 +35,8 @@ public class EmployeeService implements IEmployeeService {
         }
         
         setTreeLevels(root);
-
+        
+        // Analyzing nodes and outputting observations to console 
         analyzeNodesRecursively(
                 root, 
                 MAX_REPORTING_LEVELS_TO_CEO, 
@@ -41,12 +46,12 @@ public class EmployeeService implements IEmployeeService {
     }
 
     /**
-     * Recursively adds the object result of analysis for each node
+     * Analyzes all nodes and outputs observations to console recursively
      * 
-     * @param node
-     * @param maxLevels
-     * @param maxSalaryCoefficient
-     * @param minSalaryCoefficient
+     * @param node Current node being analyzes
+     * @param maxLevels Maximum levels allowed between node and root
+     * @param maxSalaryCoefficient Maximum salary coefficient allowed between manager and subordinates
+     * @param minSalaryCoefficient Minimum salary coefficient allowed between manager and subordinates
      */
     private void analyzeNodesRecursively(EmployeeTreeNode node, int maxLevels, double maxSalaryCoefficient, double minSalaryCoefficient) {
         double childAvgSalary = node.calculateChildrenAverageSalary();
@@ -141,7 +146,7 @@ public class EmployeeService implements IEmployeeService {
     }
     
     /**
-     * Recursively sets Level property for all the nodes, starting by root
+     * Recursively sets the Level property for all the nodes in the subtree.
      * 
      * @param node The current EmployeeTreeNode
      */
@@ -151,5 +156,4 @@ public class EmployeeService implements IEmployeeService {
             setTreeLevels(child);
         }
     }
-    
 }

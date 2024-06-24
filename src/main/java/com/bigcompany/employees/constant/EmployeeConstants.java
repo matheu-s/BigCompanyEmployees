@@ -9,12 +9,12 @@ public final class EmployeeConstants {
     /**
      * The maximum allowed percentage of difference between a manager salary and the average of its subordinates (50%)
      */
-    public static final double MAX_SALARY_DIFFERENCE_PERCENTAGE = 50.0;
+    public static final double MAX_SALARY_DIFFERENCE_COEFFICIENT = 1.5;
 
     /**
      * The minimum allowed percentage of difference between a manager salary and the average of its subordinates (20%)
      */
-    public static final double MIN_SALARY_DIFFERENCE_PERCENTAGE = 20.0;
+    public static final double MIN_SALARY_DIFFERENCE_COEFFICIENT = 1.2;
 
     /**
      * The maximum number of managers allowed between an employee and the CEO

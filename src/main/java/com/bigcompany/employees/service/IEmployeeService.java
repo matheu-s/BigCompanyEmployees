@@ -10,6 +10,8 @@ public interface IEmployeeService {
     /**
      * Entry point function that gathers business requirements,
      * triggers tree generation and print results.
+     * 
+     * @param filePathFromResource Path to file in resources folder.
      */
-    void analyzeEmployees();
+    void analyzeEmployees(String filePathFromResource);
 }

@@ -1,0 +1,17 @@
+Id,firstName,lastName,salary,managerId
+402,Sarah,Connor,25000,401
+403,Jane,Doe,20000,402
+404,Linda,Right,15000,403
+405,Chris,Fault,12000,404
+406,Mary,Shelley,9000,405
+407,Anne,Rice,7000,406
+123,Joe,Doe,60000,
+124,Martin,Chekov,45000,123
+125,Bob,Ronstad,47000,123
+300,Alice,Hasacat,50000,124
+305,Brett,Hardleaf,34000,300
+400,John,Smith,55000,123
+401,Sam,Wise,30000,400
+700,Maluco,Souza,1201,123
+701,Malucasso,souza,800,700
+702,Maluc,Souza,961,701

@@ -2,7 +2,6 @@ package com.bigcompany.employees.service.impl;
 
 import com.bigcompany.employees.model.Employee;
 import com.bigcompany.employees.model.EmployeeTreeNode;
-import com.bigcompany.employees.service.IEmployeeAnalyzer;
 import com.bigcompany.employees.service.IEmployeeTreeGenerator;
 
 import java.io.BufferedReader;

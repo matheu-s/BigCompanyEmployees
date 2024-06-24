@@ -40,7 +40,7 @@ public class EmployeeTreeNode {
     }
     
     /**
-     * Iterates all direct child and calculates the average salary of them
+     * Iterates all direct child and calculates the average salary of them.
      * 
      * @return The average salary of the direct child 
      */
@@ -65,31 +65,6 @@ public class EmployeeTreeNode {
     public void addChild(EmployeeTreeNode node) {
         this.children.add(node);
         node.setParent(this);
-    }
-
-    /**
-     * Gathers all nodes in the subtree rooted at this node.
-     *
-     * @return A list of all nodes in this subtree, including the current node.
-     */
-    public List<EmployeeTreeNode> getAllNodes() {
-        List<EmployeeTreeNode> allNodes = new ArrayList<>();
-        collectChildNodesRecursively(this, allNodes);
-        return allNodes;
-    }
-
-    /**
-     * Adds nodes to the employee's list recursively.
-     * 
-     * @param node current node expanding.
-     * @param allNodes initial empty list.
-     */
-    private void collectChildNodesRecursively(EmployeeTreeNode node, List<EmployeeTreeNode> allNodes) {
-        allNodes.add(node);
-        for (EmployeeTreeNode child : node.getChildren()) {
-            System.out.println("Employee "+ child.employee.getId() + " on level " + child.getLevel() + " responds to " + child.getEmployee().getManagerId());
-            collectChildNodesRecursively(child, allNodes);
-        }
     }
 
     public Employee getEmployee() {

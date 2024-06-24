@@ -52,7 +52,7 @@ public class EmployeeAnalysisResult {
      * @param minSalary Minimum salary allowed. 
      * @param isManager If Employee is a manager.
      */
-    public EmployeeAnalysisResult(Employee employee, int level, int maxLevel, double maxSalary, double minSalary, boolean isManager) {
+    public EmployeeAnalysisResult(Employee employee, int level, int maxLevel, double minSalary, double maxSalary, boolean isManager) {
         this.observations = new ArrayList<>(2);
         this.employee = employee;
         this.level = level;

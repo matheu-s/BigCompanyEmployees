@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeeTreeNodeTest {
     
@@ -16,7 +15,6 @@ public class EmployeeTreeNodeTest {
     
     @BeforeEach
     void setUp() {
-        System.out.println("setting up");
         // Initialize root 
         Employee employeeCeo = new Employee(0, "matheus", "souza", 60000, null);
         root = new EmployeeTreeNode(employeeCeo);
@@ -45,24 +43,13 @@ public class EmployeeTreeNodeTest {
     @Test
     void testCalculateAverageSubordinateSalary() {
         // Calculate the average salary of direct subordinates of the root node
-        double averageSubordinateSalary = root.calculateSubordinatesAverageSalary();
+        double averageSubordinateSalary = root.calculateChildrenAverageSalary();
         assertEquals(46000, averageSubordinateSalary, 0.001, "Average salary of direct subordinates should be 46000");
 
-        // Verify that a node with no children returns NaN as the average salary, as this operation shouldn't even be made
-        double child1AverageSalary = child1.calculateSubordinatesAverageSalary();
-        assertEquals(Double.NaN, child1AverageSalary, "Average salary of direct subordinates for child1 should be NaN");
-    } 
-    
-    @Test
-    void testGetAllNodes() {
-        // Get all nodes in the tree starting from the root
-        List<EmployeeTreeNode> allNodes = root.getAllNodes();
-        assertEquals(3, allNodes.size(), "There should be 3 nodes in total (root + 2 children)");
-
-        // Verify that all expected nodes are present in the list
-        assertTrue(allNodes.contains(root), "All nodes should contain root");
-        assertTrue(allNodes.contains(child1), "All nodes should contain child1");
-        assertTrue(allNodes.contains(child2), "All nodes should contain child2");
+        // Verify that a node with no children throws error, as this operation shouldn't even be made
+        Exception exception = assertThrows(ArithmeticException.class, child1::calculateChildrenAverageSalary);
+        String expectedMsg = "Cannot calculate average of node with no children";
+        assertEquals(expectedMsg, exception.getMessage());
     }
     
 }

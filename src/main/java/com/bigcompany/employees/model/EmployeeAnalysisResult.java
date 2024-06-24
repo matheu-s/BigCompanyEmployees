@@ -38,6 +38,11 @@ public class EmployeeAnalysisResult {
     private final double minSalary;
 
     /**
+     * If Employee is a manager.
+     */
+    private final boolean isManager;
+    
+    /**
      * Constructs EmployeeAnalysisResult with defined data and run analysis methods.
      * 
      * @param employee  The employee data to be analyzed.
@@ -45,24 +50,30 @@ public class EmployeeAnalysisResult {
      * @param maxLevel  Maximum report line length allowed.
      * @param maxSalary Maximum salary allowed. 
      * @param minSalary Minimum salary allowed. 
+     * @param isManager If Employee is a manager.
      */
-    public EmployeeAnalysisResult(Employee employee, int level, int maxLevel, double maxSalary, double minSalary) {
+    public EmployeeAnalysisResult(Employee employee, int level, int maxLevel, double maxSalary, double minSalary, boolean isManager) {
         this.observations = new ArrayList<>(2);
         this.employee = employee;
         this.level = level;
         this.maxLevel = maxLevel;
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;
+        this.isManager = isManager;
         
-        analyzeSalary();
         analyzeReportLine();
+        analyzeSalary();
     }
 
     /**
-     * Analyzes if payment is between the allowed range, 
-     * if negative, adds observation to class informing the discrepancy amount.
+     * If a manager, then analyzes if payment is between the allowed ranges, 
+     * when negative, adds observation to class informing the discrepancy amount.
      */
     private void analyzeSalary() {
+        if (!isManager) {
+            return;
+        }
+        
         double salary = employee.getSalary();
         double overpayment = salary - maxSalary;
         double underpayment = minSalary - salary;
@@ -71,7 +82,7 @@ public class EmployeeAnalysisResult {
             String obs = "Employee " + employee.getId() + " is earning " + overpayment + " more than allowed.";
             observations.add(obs);
         } else if (underpayment > 0) {
-            String obs = "Employee " + employee.getId() + " is earning " + underpayment +  " less than allowed.";
+            String obs = "Employee " + employee.getId() + " is earning " + underpayment +  " less than the minimum.";
             observations.add(obs);
         }
     }
@@ -81,12 +92,7 @@ public class EmployeeAnalysisResult {
      * if negative, adds observation to class informing the discrepancy amount.
      */
     private void analyzeReportLine() {
-        if (employee.getManagerId() == null) {
-            //Skip CEO
-            return;
-        }
-        
-        int levelDifference = maxLevel - level;
+        int levelDifference = level - maxLevel;
         if (levelDifference > 0) {
             String obs = String.format(
                     "Employee %d has a reporting line too big. Excess Levels: %d",

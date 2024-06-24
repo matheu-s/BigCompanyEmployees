@@ -45,6 +45,10 @@ public class EmployeeTreeNode {
      * @return The average salary of the direct child 
      */
     public double calculateChildrenAverageSalary() {
+        if (this.getChildren().isEmpty()) {
+            throw new ArithmeticException("Cannot calculate average of node with no children");
+        }
+        
         double sum = 0;
         for (EmployeeTreeNode child : this.children) {
             sum += child.getEmployee().getSalary();

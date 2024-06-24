@@ -28,7 +28,7 @@ public class EmployeeTreeNode {
      * 
      * @return The average salary of the direct child 
      */
-    public double calculateSubordinatesAverageSalary() {
+    public double calculateChildrenAverageSalary() {
         double sum = 0;
         for (EmployeeTreeNode child : this.children) {
             sum += child.getEmployee().getSalary();

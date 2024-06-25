@@ -93,6 +93,7 @@ public class EmployeeAnalysisResult {
      */
     private void analyzeReportLine() {
         int levelDifference = level - maxLevel;
+        levelDifference--;
         if (levelDifference > 0) {
             String obs = String.format(
                     "Employee %d has a reporting line too big. Excess Levels: %d",

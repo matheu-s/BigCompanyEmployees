@@ -22,7 +22,7 @@ public class EmployeeServiceTest {
         List<String> observations = employeeService.observationsList;
 
         assertFalse(observations.isEmpty(), "Results should not be empty");
-        assertTrue(observations.contains("Employee 407 has a reporting line too big. Excess Levels: 4"), "Results should contain the analysis");
+        assertTrue(observations.contains("Employee 407 has a reporting line too big. Excess Levels: 3"), "Results should contain the analysis");
     }
 
     @Test
@@ -43,8 +43,11 @@ public class EmployeeServiceTest {
         assertFalse(observations.isEmpty(), "Results should not be empty");
 
         // Checking report line obs
-        assertTrue(observations.contains("Employee 407 has a reporting line too big. Excess Levels: 4"), "Results should contain the analysis");
-        assertTrue(observations.contains("Employee 406 has a reporting line too big. Excess Levels: 3"), "Results should contain the analysis");
+        assertTrue(observations.contains("Employee 407 has a reporting line too big. Excess Levels: 3"), "Results should contain the analysis");
+        assertTrue(observations.contains("Employee 406 has a reporting line too big. Excess Levels: 2"), "Results should contain the analysis");
+        assertTrue(observations.contains("Employee 405 has a reporting line too big. Excess Levels: 1"), "Results should contain the analysis");
+        assertFalse(observations.contains("Employee 404 has a reporting line too big. Excess Levels: 0"), "Results not should contain this wrong analysis");
+        assertFalse(observations.contains("Employee 404 has a reporting line too big. Excess Levels: 1"), "Results not should contain this wrong analysis");
         assertFalse(observations.contains("Employee 403 has a reporting line too big. Excess Levels: 0"), "Results not should contain this wrong analysis");
         
         // Checking salary obs

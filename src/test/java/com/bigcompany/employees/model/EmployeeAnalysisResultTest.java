@@ -151,7 +151,7 @@ public class EmployeeAnalysisResultTest {
         setUpNoManagerBigReportLineCase();
         assertFalse(result.getObservations().isEmpty());
         
-        String obs = "Employee 50 has a reporting line too big. Excess Levels: 2";
+        String obs = "Employee 50 has a reporting line too big. Excess Levels: 1";
         assertEquals(obs, result.getObservations().getFirst());
     }
     
